@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <title>Shopping Cart</title>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" />
+   <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+
+   <section>
+      <div class="container">
+         <div class="cart">
+            <div class="col-md-12 col-lg-10 mx-auto">
+               <div id="first" class="cart-item">
+                  <div class="row">
+                     <div class="col-md-7 center-item">
+                        <img src="images/product-1.png" alt="">
+                        <h5>iPhone 11 128GB Black</h5>
+                     </div>
+
+                     <div class="col-md-5 center-item">
+                        <div class="input-group number-spinner">
+                           <button id="devrease1" class="btn btn-default"><i id="min" class="fas fa-minus"></i></button>
+                           <input id="increase1" type="text" class="form-control text-center" value="1">
+                           <button id="vv" class="btn btn-default"><i class="fas fa-plus"></i></button>
+                        </div>
+                        <h5>$ <span id="price">1219</span></h5>
+                        <img id="remove" src="images/remove.png" alt="" class="remove-item">
+                     </div>
+                  </div>
+               </div>
+
+               <div id="second"class="cart-item">
+                  <div class="row">
+                     <div class="col-md-7 center-item mx-auto">
+                        <img src="images/product-2.png" alt="">
+                        <h5>iPhone 11 Silicone Case - Black</h5>
+                     </div>
+                     <div class="col-md-5 center-item">
+                        <div class="input-group number-spinner">
+                           <button id="" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id="" type="text" class="form-control text-center" value="3">
+                           <button id="" class="btn btn-default"><i class="fas fa-plus"></i></button>
+
+                        </div>
+                        <h5>$<span id="sprice">59</span></h5>
+                        <img id="remove1"  src="images/remove.png" alt="" class="remove-item">
+                     </div>
+                  </div>
+               </div>
+
+               <div class="cart-item">
+                  <div class="row">
+
+                     <div class="col-md-8">
+                        <h5>Subtotal: </h5>
+                        <h5>Tax:</h5>
+                        <h5>Total:</h5>
+                     </div>
+
+                     <div class="col-md-4 status">
+                        <h5>$ <span id="subtotlal">1219</span></h5>
+                        <h5>$ <span id="tax">0</span></h5>
+                        <h5>$ <span id="total">1219</span></h5>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-12 pt-4 pb-4">
+                  <button type="button" class="btn btn-success check-out">Check Out</button>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+
+   <script>
+      const remove=document.getElementById("remove");
+      remove.addEventListener("click",function(){
+         document.getElementById("subtotlal").innerText=0;
+         document.getElementById("total").innerText=0;
+         const first=document.getElementById("first");
+         first.style.display="none";  
+         
+          
+         
+      })
+      const remove2=document.getElementById("remove1")
+      remove2.addEventListener("click", function(){
+         const second=document.getElementById("second");
+         second.style.display="none";
+         
+         
+      })
+      var i = 1;
+      function increaseClick() {
+        i++;
+        document.getElementById('increase1').value = i;
+        return i;
+      }
+      var i = 1;
+      function devreaseClick() {
+        i--;
+        document.getElementById('increase1').value = i;
+        return i;
+      }
+
+      const vv =document.getElementById("vv");
+      vv.addEventListener("click", function(){
+
+         const ff=increaseClick();
+         const p=document.getElementById("price").innerText;
+         const prtxt=parseFloat(p);
+         const result=1219+prtxt;
+         document.getElementById("price").innerText=result;
+         const subtotlal=document.getElementById("subtotlal").innerText;
+         const sstotal=parseFloat(subtotlal);
+          document.getElementById("subtotlal").innerText=result;
+          const total=document.getElementById("total").innerText;
+            const totalnumber=parseFloat(total);
+            document.getElementById("total").innerText=result;
+        
+      })
+
+      
+      const devrease1 =document.getElementById("devrease1");
+      devrease1.addEventListener("click", function(event){
+        
+         const mk=document.getElementById('increase1').value;
+         const kh=parseFloat(mk);
+         
+         if(kh>1){
+            const komlo=devreaseClick();
+            const p=document.getElementById("price").innerText;
+            const prtxt=parseFloat(p);
+            const result=prtxt-1219;
+            document.getElementById("price").innerText=result;
+            const subtotlal=document.getElementById("subtotlal").innerText;
+            const sstotal=parseFloat(subtotlal);
+            document.getElementById("subtotlal").innerText=result;
+            const total=document.getElementById("total").innerText;
+            const totalnumber=parseFloat(total);
+            document.getElementById("total").innerText=result;
+
+            if(komlo==1){
+               const min=document.getElementById("min");
+               const dddd=min.style.display="";
+               console.log("yes working");
+         }
+            
+            
+            }
+        
+      })
+   </script>
+</body>
+
+</html>
